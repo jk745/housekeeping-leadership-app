@@ -1,4 +1,4 @@
-import { createStructuredDraftWithGemini } from "./shared/gemini-client";
+import { createStructuredDraftWithGroq } from "./shared/groq-client";
 import {
   parseStructuredDraftResponse,
   parseTransformEntryPayload,
@@ -60,7 +60,7 @@ export async function handler(event: NetlifyFunctionEvent): Promise<NetlifyFunct
     });
   }
 
-  const apiKey = getEnv("GEMINI_API_KEY");
+  const apiKey = getEnv("GROQ_API_KEY");
 
   if (!apiKey) {
     return json(500, {
@@ -70,9 +70,9 @@ export async function handler(event: NetlifyFunctionEvent): Promise<NetlifyFunct
   }
 
   try {
-    const draft = await createStructuredDraftWithGemini(payload, {
+    const draft = await createStructuredDraftWithGroq(payload, {
       apiKey,
-      model: getEnv("GEMINI_TRANSFORM_MODEL"),
+      model: getEnv("GROQ_TRANSFORM_MODEL"),
     });
     const validatedDraft = parseStructuredDraftResponse(draft);
 
@@ -90,7 +90,7 @@ export async function handler(event: NetlifyFunctionEvent): Promise<NetlifyFunct
   } catch (error) {
     if (
       error instanceof Error &&
-      error.message === "Gemini response broke structured contract"
+      error.message === "Groq response broke structured contract"
     ) {
       return json(500, {
         ok: false,
