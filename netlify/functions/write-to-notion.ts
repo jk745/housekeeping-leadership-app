@@ -106,10 +106,12 @@ export async function handler(event: NetlifyFunctionEvent): Promise<NetlifyFunct
       ok: true,
       url: result.url,
     });
-  } catch {
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[write-to-notion] error:', msg);
     return json(500, {
       ok: false,
-      error: "寫入 Notion 失敗，請稍後再試。",
+      error: '寫入 Notion 失敗：' + msg,
     });
   }
 }
