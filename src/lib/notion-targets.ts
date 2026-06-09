@@ -3,7 +3,8 @@ import type { EntryTypeId } from "./types";
 export type NotionDatabaseTarget = {
   entryType: EntryTypeId;
   kind: "database";
-  targetId: string;
+  targetId?: string;
+  envKey?: string;
 };
 
 export type NotionPageTarget = {
@@ -17,8 +18,8 @@ export type NotionTarget = NotionDatabaseTarget | NotionPageTarget;
 const notionTargetMap: Record<EntryTypeId, NotionTarget> = {
   "reading-note": {
     entryType: "reading-note",
-    kind: "page",
-    envKeys: ["NOTION_READING_NOTE_PAGE_ID", "NOTION_MANAGER_REPORT_PAGE_ID"],
+    kind: "database",
+    envKey: "NOTION_READING_NOTE_PAGE_ID",
   },
   "field-observation": {
     entryType: "field-observation",

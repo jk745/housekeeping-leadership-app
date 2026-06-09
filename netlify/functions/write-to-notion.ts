@@ -74,9 +74,18 @@ export async function handler(event: NetlifyFunctionEvent): Promise<NetlifyFunct
 
   try {
     if (target.kind === "database") {
+      const parentId = target.targetId ?? (target.envKey ? env[target.envKey]?.trim() : undefined);
+
+      if (!parentId) {
+        return json(500, {
+          ok: false,
+          error: "Notion 目的地尚未設定完成，請稍後再試。",
+        });
+      }
+
       const page = await createDatabasePage({
         apiKey,
-        parentId: target.targetId,
+        parentId,
         properties: notionPayload.properties ?? {},
         children: notionPayload.children,
       });
