@@ -18,9 +18,9 @@ type AppendBlockChildrenOptions = {
   children: unknown[];
 };
 
-async function postToNotion({ apiKey, path, body, notionVersion }: NotionRequestOptions) {
+async function postToNotion({ apiKey, path, body, notionVersion, method }: NotionRequestOptions & { method?: string }) {
   const response = await fetch(`https://api.notion.com/v1${path}`, {
-    method: "POST",
+    method: method ?? "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
@@ -64,6 +64,7 @@ export async function appendBlockChildren(options: AppendBlockChildrenOptions) {
   await postToNotion({
     apiKey: options.apiKey,
     path: `/blocks/${options.pageId}/children`,
+    method: "PATCH",
     body: {
       children: options.children,
     },
