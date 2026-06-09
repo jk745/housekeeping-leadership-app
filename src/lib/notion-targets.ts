@@ -23,18 +23,18 @@ const notionTargetMap: Record<EntryTypeId, NotionTarget> = {
   },
   "field-observation": {
     entryType: "field-observation",
-    kind: "page",
-    envKeys: ["NOTION_FIELD_OBSERVATION_PAGE_ID", "NOTION_MANAGER_REPORT_PAGE_ID"],
+    kind: "database",
+    targetId: "5eb2e0b4a4fd40d382405b8dd9b15729",
   },
   "team-interaction": {
     entryType: "team-interaction",
-    kind: "page",
-    envKeys: ["NOTION_TEAM_INTERACTION_PAGE_ID", "NOTION_MANAGER_REPORT_PAGE_ID"],
+    kind: "database",
+    targetId: "d547fa8d7d2c4e9d98cf47fc178b7a5d",
   },
   "improvement-idea": {
     entryType: "improvement-idea",
-    kind: "page",
-    envKeys: ["NOTION_IMPROVEMENT_IDEA_PAGE_ID", "NOTION_MANAGER_REPORT_PAGE_ID"],
+    kind: "database",
+    targetId: "ec59b785698b48c49669726bd4f9d127",
   },
   "manager-update": {
     entryType: "manager-update",
