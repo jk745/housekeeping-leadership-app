@@ -17,23 +17,23 @@ export type NotionTarget = NotionDatabaseTarget | NotionPageTarget;
 const notionTargetMap: Record<EntryTypeId, NotionTarget> = {
   "reading-note": {
     entryType: "reading-note",
-    kind: "database",
-    targetId: "68929af5-283b-41cc-b69e-f0c0a72100bd",
+    kind: "page",
+    envKeys: ["NOTION_READING_NOTE_PAGE_ID", "NOTION_MANAGER_REPORT_PAGE_ID"],
   },
   "field-observation": {
     entryType: "field-observation",
-    kind: "database",
-    targetId: "45b288dd-80ee-4f23-865c-4c3b394fabfe",
+    kind: "page",
+    envKeys: ["NOTION_FIELD_OBSERVATION_PAGE_ID", "NOTION_MANAGER_REPORT_PAGE_ID"],
   },
   "team-interaction": {
     entryType: "team-interaction",
-    kind: "database",
-    targetId: "5684a663-c99a-4f82-afab-b1362859f53b",
+    kind: "page",
+    envKeys: ["NOTION_TEAM_INTERACTION_PAGE_ID", "NOTION_MANAGER_REPORT_PAGE_ID"],
   },
   "improvement-idea": {
     entryType: "improvement-idea",
-    kind: "database",
-    targetId: "fe0e1586-65dc-4afe-9128-8b1a37664d44",
+    kind: "page",
+    envKeys: ["NOTION_IMPROVEMENT_IDEA_PAGE_ID", "NOTION_MANAGER_REPORT_PAGE_ID"],
   },
   "manager-update": {
     entryType: "manager-update",
