@@ -88,6 +88,7 @@ export async function handler(event: NetlifyFunctionEvent): Promise<NetlifyFunct
     }
 
     const pageId = resolveNotionPageTargetId(target, env);
+    console.log('[write-to-notion] entryType:', payload.entryType, '| pageId used:', JSON.stringify(pageId));
 
     if (!pageId) {
       return json(500, {
