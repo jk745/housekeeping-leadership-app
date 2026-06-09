@@ -98,9 +98,11 @@ export async function handler(event: NetlifyFunctionEvent): Promise<NetlifyFunct
       });
     }
 
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("[transform-entry] error:", msg);
     return json(500, {
       ok: false,
-      error: "目前無法完成整理，請稍後再試。",
+      error: "目前無法完成整理：" + msg,
     });
   }
 }
